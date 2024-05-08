@@ -35,6 +35,6 @@ app.use('/paymentRequests',paymentRequestRoutes);
 app.use('/mealItems',mealItemRoutes);
 const PORT = process.env.PORT;
 
-mongoose.connect(process.env.CONNECTION_URL)
+mongoose.connect(process.env.MONGODB_URL)
                 .then(() => app.listen(PORT, () => console.log('Server running on port: ' + PORT)))
                 .catch((error) => console.log(error.message));

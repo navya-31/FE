@@ -49,7 +49,7 @@ function Hotel() {
       hotel_address: hotels[0].address,
       hotel_name: hotels[0].name,
       next_vacancy_date: date,
-      type: form.type
+      type: form.type,
     };
     try {
       const data = await api.createRoom(curForm);
@@ -89,8 +89,12 @@ function Hotel() {
     fetchData();
   }, []);
 
-  const handleChange = (e) =>
+  
+  const handleChange = (e) =>{
     setForm({ ...form, [e.target.name]: e.target.value });
+  }
+
+
   return (
     <div style={{ marginTop: "10px" }}>
       {loading ? (
