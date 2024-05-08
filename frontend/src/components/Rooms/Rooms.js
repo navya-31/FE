@@ -11,7 +11,11 @@ const Rooms = ({ setCurrentId, rooms }) => {
   const dispatch = useDispatch();
 
   return rooms.length === 0 ? (
-    <Typography variant="h5" gutterBottom style={{ marginLeft: "10px" }}>
+    <Typography
+      variant="h5"
+      gutterBottom
+      style={{ marginLeft: "10px", marginTop: "50px" }}
+    >
       No Available rooms
     </Typography>
   ) : (

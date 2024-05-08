@@ -49,6 +49,7 @@ function RoomCard({ room, setCurrentId }) {
         <Typography gutterBottom variant="h6" component="div">
           Room #{room.room_number}
         </Typography>
+        <Typography variant="body2">Type: {room.type}</Typography>
         <Typography variant="body2">Rent: {room.rent} $</Typography>
         <Typography variant="body2">Area: {room.area} m2</Typography>
         {date.getFullYear() === 3000 ? (

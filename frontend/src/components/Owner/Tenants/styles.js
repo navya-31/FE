@@ -23,7 +23,7 @@ export default makeStyles({
     flexDirection: "column",
     justifyContent: "space-between",
     borderRadius: "15px",
-    height: "114px",
+    height: "140px",
     width: "600px",
     margin: "10px 10px 10px 10px",
     // filter: drop-shadow("0px 4px 4px", rgba(0, 0, 0, 0.25))

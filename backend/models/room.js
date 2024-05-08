@@ -12,7 +12,8 @@ const roomSchema = mongoose.Schema({
         type: String,
         default: 'Unassigned'
     },
-    next_vacancy_date: Date
+    next_vacancy_date: Date,
+    type: String
 })
 
 const roomModel = mongoose.model('roomModel',roomSchema);

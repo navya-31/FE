@@ -33,7 +33,7 @@ function Profile() {
     name: user?.result?.name,
     phone: user?.result?.phone,
     email: user?.result?.email,
-    password: "",
+    password: user?.result?.password,
   };
   const [form, setForm] = useState(initialState);
   const [showPassword, setShowPassword] = useState(false);
@@ -63,8 +63,9 @@ function Profile() {
           ...form,
           _id: user?.result?._id,
         });
+
         Swal.fire({
-          title: "profile updated successfully! Login to continue",
+          title: "Profile updated successfully! Login to continue",
           icon: "success",
         }).then(() => {
           dispatch({ type: "LOGOUT" });
@@ -90,7 +91,6 @@ function Profile() {
     padding: "30px 20px",
     width: 600,
     margin: "10px 10px 10px 0px",
-    
   };
   return (
     <div>

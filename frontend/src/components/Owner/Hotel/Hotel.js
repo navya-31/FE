@@ -49,6 +49,7 @@ function Hotel() {
       hotel_address: hotels[0].address,
       hotel_name: hotels[0].name,
       next_vacancy_date: date,
+      type: form.type
     };
     try {
       const data = await api.createRoom(curForm);
@@ -149,6 +150,14 @@ function Hotel() {
                         label="Enter room rent"
                         handleChange={handleChange}
                         type="number"
+                      />
+                    </Grid>
+                    <Grid item xs={12}>
+                      <Input
+                        isRequired={true}
+                        name="type"
+                        label="Enter type of room"
+                        handleChange={handleChange}
                       />
                     </Grid>
                     <Grid item xs={12}>

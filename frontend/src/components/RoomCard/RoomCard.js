@@ -20,6 +20,7 @@ import { getTenantsByUserId } from "../../actions/Tenants";
 import { createSelector } from "reselect";
 import Swal from "sweetalert2";
 import * as api from "../../api/index";
+
 function RoomCard({ room, setCurrentId }) {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
   const dispatch = useDispatch();
@@ -133,7 +134,11 @@ function RoomCard({ room, setCurrentId }) {
         <Typography gutterBottom variant="h6" component="div">
           {room.hotel_name}
         </Typography>
-        <Typography variant="body2">Address: {room.hotel_address}</Typography>
+        <Typography gutterBottom variant="body1" component="div">
+          Address: {room.hotel_address}
+        </Typography>
+        <Typography variant="body2">Room number: {room.room_number}</Typography>
+        <Typography variant="body2">Type of room: {room.type}</Typography>
         <Typography variant="body2">Rent: {room.rent} $</Typography>
         <Typography variant="body2">Area: {room.area} m2</Typography>
       </CardContent>

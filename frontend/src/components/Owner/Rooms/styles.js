@@ -22,7 +22,7 @@ export default makeStyles({
     flexDirection: "column",
     justifyContent: "space-between",
     borderRadius: "15px",
-    height: "124px",
+    height: "140px",
     width: "600px",
     margin: "0px 10px 0px 10px",
   },
