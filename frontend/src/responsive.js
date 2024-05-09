@@ -50,9 +50,9 @@ export const large = (props) => {
 
 export const imageConfig = (props) => {
   return css`
-  @media only screen and (max-width: 1290px) {
-    ${props}
-  }
+    @media only screen and (max-width: 1290px) {
+      ${props}
+    }
   `;
 };
 

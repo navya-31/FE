@@ -1,8 +1,8 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
 const superUserSchema = mongoose.Schema({
-    name: String
-})
+  name: String,
+});
 
-const superUserModel = mongoose.model('superUserModel',superUserSchema);
+const superUserModel = mongoose.model("superUserModel", superUserSchema);
 export default superUserModel;

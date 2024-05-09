@@ -3,7 +3,6 @@ import { aboutResponsive, tablet } from "../../responsive.js";
 import { Link } from "react-router-dom";
 import Button from "./Button";
 
-
 const Section = styled.footer`
   margin-top: 100px;
   background: #3a3b7b;
@@ -18,6 +17,10 @@ const Container = styled.div`
     flexDirection: "column",
     padding: "2rem",
   })};
+
+  a {
+    text-decoration: none;
+  }
 `;
 
 const Left = styled.div`

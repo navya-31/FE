@@ -12,7 +12,7 @@ import { Button, CircularProgress, Grid } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { createRoomRequest } from "../../actions/RoomRequests.js";
-import image from "../../images/rajanigandha.png";
+import image from "../../images/livingRoom.jpg";
 import useStyles from "./styles.js";
 import { getHotelByHotelId } from "../../actions/Hotels.js";
 import { getTenantsByUserId } from "../../actions/Tenants.js";
@@ -44,6 +44,7 @@ function HotelCard({ currentUser, currentHotel, currentTenant, setCurrentId }) {
     "November",
     "December",
   ];
+
   const leave = async () => {
     try {
       console.log(
@@ -51,6 +52,7 @@ function HotelCard({ currentUser, currentHotel, currentTenant, setCurrentId }) {
         currentTenant.user_id,
         currentHotel._id
       );
+
       Swal.fire({
         title: "Are you sure you want to leave? this action cannot be reversed",
         showDenyButton: true,
@@ -73,12 +75,13 @@ function HotelCard({ currentUser, currentHotel, currentTenant, setCurrentId }) {
       });
     } catch (error) {}
   };
+
   return (
     <Card className={classes.card}>
       <CardMedia className={classes.media} image={image}></CardMedia>
       <CardContent className={classes.overlay}>
         <Typography variant="body1">
-          Hello {currentUser.result.name}!
+          Hello, {currentUser.result.name}!
         </Typography>
         <Typography variant="body2" style={{ marginLeft: "312px" }}>
           Tenant since {monthNames[date.getMonth()]} {date.getFullYear()}
@@ -87,13 +90,17 @@ function HotelCard({ currentUser, currentHotel, currentTenant, setCurrentId }) {
 
       <CardContent className={classes.overlay2}>
         <Typography gutterBottom variant="h4">
-          You are living in {currentTenant[0].hotel_name} in Room #{currentTenant[0].room_number}
+          You are living in {currentTenant[0].hotel_name} in Room #
+          {currentTenant[0].room_number}
         </Typography>
         <Typography variant="body2">
-          Every hotel has a meal system. That requires at least one grocery
-          shopping chore per person, every month. With meal system, you get to
-          enjoy home made quality meals everyday for lunch and dinner. Care to
-          join?
+          Every hotel has a meal system in place. As part of this system, we
+          ensure that every guest receives at least one grocery shopping chore
+          per person, every month. With our meal system, you get to enjoy
+          homemade quality meals prepared fresh every day for both lunch and
+          dinner. Our goal is to provide you with delicious and nutritious meals
+          that will make your stay even more enjoyable. <p></p>Care to join us for a
+          delightful dining experience?
         </Typography>
       </CardContent>
 

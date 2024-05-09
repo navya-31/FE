@@ -6,7 +6,6 @@ import RoomCard from "../RoomCard/RoomCard.js";
 import { getHotelByHotelId } from "../../actions/Hotels.js";
 import Preview from "../RoomCard/Preview.js";
 
-
 const Rooms = ({ setCurrentId, rooms }) => {
   const dispatch = useDispatch();
 

@@ -1,92 +1,92 @@
-import mongoose from 'mongoose';
-import reviewModel from '../models/review.js'
+import mongoose from "mongoose";
+import reviewModel from "../models/review.js";
 
-export const getReviews = async(req, res) => {
-    try{
-        const reviews = await reviewModel.find();
-        console.log(reviews);
-        res.status(200).json(reviews);
-    } catch(error){
-        res.status(404).json({message: error.message});
-    }
-}
+export const getReviews = async (req, res) => {
+  try {
+    const reviews = await reviewModel.find();
+    console.log(reviews);
+    res.status(200).json(reviews);
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+};
 
-export const getReviewsByHotel = async(req,res) => {
-    const {id} = req.params;
-    if(!mongoose.Types.ObjectId.isValid(id))
-    {
-        return res.status(404).send('No hotels with that ID');
-    }
-    try{     
-        const reviews = await reviewModel.find({hotel_id: id});
-        console.log(reviews);
-        res.status(200).json(reviews);
-    } catch(error){
-        res.status(404).json({message: error.message});
-    }
-} 
+export const getReviewsByHotel = async (req, res) => {
+  const { id } = req.params;
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(404).send("No hotels with that ID");
+  }
+  try {
+    const reviews = await reviewModel.find({ hotel_id: id });
+    console.log(reviews);
+    res.status(200).json(reviews);
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+};
 
-export const getReviewsByUser = async(req,res) => {
-    const {id: _id} = req.params;
-    if(!mongoose.Types.ObjectId.isValid(_id))
-    {
-        return res.status(404).send('No tenants with that ID');
-    }
-    try{     
-        const reviews = await reviewModel.find({user_id: _id});
-        console.log(reviews);
-        res.status(200).json(reviews);
-    } catch(error){
-        res.status(404).json({message: error.message});
-    }
-}
+export const getReviewsByUser = async (req, res) => {
+  const { id: _id } = req.params;
+  if (!mongoose.Types.ObjectId.isValid(_id)) {
+    return res.status(404).send("No tenants with that ID");
+  }
+  try {
+    const reviews = await reviewModel.find({ user_id: _id });
+    console.log(reviews);
+    res.status(200).json(reviews);
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+};
 
-export const createReview = async (req,res)=>{
-    const review = req.body;
-    console.log(review)
-    const newReview = new reviewModel(review);
-    try{
-        await newReview.save();
-        res.status(201).json(newReview);
-    } catch(error){
-        res.status(409).json({message: error.message});
-    }
-}
+export const createReview = async (req, res) => {
+  const review = req.body;
+  console.log(review);
+  const newReview = new reviewModel(review);
+  try {
+    await newReview.save();
+    res.status(201).json(newReview);
+  } catch (error) {
+    res.status(409).json({ message: error.message });
+  }
+};
 
-export const updateReview = async (req,res)=>{
-    const { id: _id} = req.params;
-    const review = req.body;
-    if(!mongoose.Types.ObjectId.isValid(_id))
-    {
-        return res.status(404).send('No review with that ID');
-    }
-    
-    const updatedReview = await reviewModel.findByIdAndUpdate(_id, {...review, _id}, {new: true});
-    res.json(updatedReview);
-}
+export const updateReview = async (req, res) => {
+  const { id: _id } = req.params;
+  const review = req.body;
+  if (!mongoose.Types.ObjectId.isValid(_id)) {
+    return res.status(404).send("No review with that ID");
+  }
 
-export const deleteReview = async (req,res)=>{
-    const {id} = req.params;
+  const updatedReview = await reviewModel.findByIdAndUpdate(
+    _id,
+    { ...review, _id },
+    { new: true }
+  );
+  res.json(updatedReview);
+};
 
-    if(!mongoose.Types.ObjectId.isValid(_id))
-    {
-        return res.status(404).send('No review with that ID');
-    }
+export const deleteReview = async (req, res) => {
+  const { id } = req.params;
 
-    await reviewModel.findByIdAndRemove(id);
+  if (!mongoose.Types.ObjectId.isValid(_id)) {
+    return res.status(404).send("No review with that ID");
+  }
 
-    res.json('Review Deleted Successfully');
-}
+  await reviewModel.findByIdAndRemove(id);
 
-export const getReviewsByUserAndHotel = async (req, res)=>{
-    const uid = req.params.uid;
-    const hid = req.params.hid;
+  res.json("Review Deleted Successfully");
+};
 
-    try{     
-        const reviews = await reviewModel.findOne({hotel_id: hid, user_id: uid});
-        console.log(reviews);
-        res.status(200).json(reviews);
-    } catch(error){
-        res.status(404).json({message: error.message});
-    }
-}
+export const getReviewsByUserAndHotel = async (req, res) => {
+  const uid = req.params.uid;
+  const hid = req.params.hid;
+
+  try {
+    const reviews = await reviewModel.findOne({ hotel_id: hid, user_id: uid });
+    console.log(reviews);
+    res.status(200).json(reviews);
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+};

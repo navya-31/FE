@@ -89,11 +89,9 @@ function Hotel() {
     fetchData();
   }, []);
 
-  
-  const handleChange = (e) =>{
+  const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
-  }
-
+  };
 
   return (
     <div style={{ marginTop: "10px" }}>
@@ -102,6 +100,19 @@ function Hotel() {
       ) : hotels.length !== 0 ? (
         <Grid container spacing={2}>
           <Grid item xs={4} md={6}>
+            <Grid item xs={4} md={6}>
+              <Typography
+                style={{
+                  fontSize: "24px",
+                  fontWeight: "bold",
+                  textTransform: "uppercase",
+                  textAlign: "center",
+                }}
+              >
+                {`It's the dashboard of ${hotels[0].name}`}
+              </Typography>
+            </Grid>
+
             <ComplaintCardList complaints={complaints} />
           </Grid>
           <Grid item xs={6} md={6}>

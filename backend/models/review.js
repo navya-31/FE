@@ -1,18 +1,17 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
 const reviewSchema = mongoose.Schema({
-    user_id: {type: String, required: true},
-    user_name: String,
-    hotel_id: {type: String, required: true},
-    comments: {type: String, required: true},
-    date_posted: 
-    {
-        type: Date,
-        default: new Date()
-    },
-    stars: {type: Number, required: true}
-})
+  user_id: { type: String, required: true },
+  user_name: String,
+  hotel_id: { type: String, required: true },
+  comments: { type: String, required: true },
+  date_posted: {
+    type: Date,
+    default: new Date(),
+  },
+  stars: { type: Number, required: true },
+});
 
-const reviewModel = mongoose.model('reviewModel',reviewSchema);
+const reviewModel = mongoose.model("reviewModel", reviewSchema);
 
 export default reviewModel;

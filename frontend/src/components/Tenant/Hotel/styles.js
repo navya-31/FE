@@ -49,13 +49,13 @@ export default makeStyles({
     padding: "0 16px",
   },
   cardActions: {
-    top: "52px",
+    top: "75px",
     display: "flex",
     justifyContent: "space-between",
     borderRadius: "55px",
     backgroundColor: "#3a3b7b",
     fontSize: "14px",
-    width: "167px",
+    width: "145px",
     height: "61px",
     color: "white",
     alignContent: "center",
@@ -87,13 +87,12 @@ export default makeStyles({
   complaint: {
     top: "10px",
     backgroundRadius: "15px",
-    width: "300px",
+    width: "70px",
     backgroundColor: "#F9F9F9",
     color: "#F9F9F9",
   },
   crow2: {
-    padding: "90px 0px 0px 0px",
-    left: "43px",
+    padding: "83px 10px 10px 43px",
   },
   cardAction2: {
     top: "20px",

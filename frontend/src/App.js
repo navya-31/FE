@@ -29,10 +29,10 @@ import Rooms from './components/Owner/Rooms/Rooms'
 import MealsheetForm from './components/Owner/MealsheetForm/MealsheetForm'
 import About from './components/About/About'
 
-
 function App() {
-  //console.log('app ni ')
+  // console.log('app')
   const [user, setUser] = useState( JSON.parse(localStorage.getItem('profile')) )
+  
   useEffect(()=>{
     setUser(JSON.parse(localStorage.getItem('profile')))
     //console.log(user)

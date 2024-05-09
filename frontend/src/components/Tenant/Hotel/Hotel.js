@@ -219,14 +219,15 @@ function Hotel() {
       }
     });
   };
+
   return (
     <div>
       {loading ? (
         <CircularProgress />
       ) : hotels.length !== 0 ? (
         <form>
-          <Grid container spacing={4}>
-            <Grid item xs={8}>
+          <Grid container spacing={3}>
+            <Grid item xs={10}>
               {/* <Item>Hotel card</Item> */}
               {!tenants[0].bill_paid ? (
                 <DefaultMessage
@@ -242,36 +243,15 @@ function Hotel() {
                 currentTenant={tenants}
               />
             </Grid>
-            <Grid item xs={4}>
-              {/* <Item>Complaint part</Item> */}
-              <Button
+
+            <Button
                 onClick={join}
                 variant="contained"
                 className={classes.cardActions}
               >
                 Join meal system
               </Button>
-              <Typography className={classes.crow2}>
-                Any complaints ?
-              </Typography>
-              <TextField
-                onChange={handleChange}
-                multiline
-                minRows={3}
-                variant="outlined"
-                label="Your Message"
-                name="complaint"
-                className={classes.complaint}
-                type="text"
-              ></TextField>
-              <Button
-                variant="contained"
-                onClick={sendComplaint}
-                className={classes.cardAction2}
-              >
-                Send
-              </Button>
-            </Grid>
+              
             <Grid item xs={4} style={{ display: "block" }}>
               {/* <Item> Rating place</Item> */}
               <Rating
@@ -284,7 +264,7 @@ function Hotel() {
                 }}
               />
               <Typography className={classes.crow}>
-                Leave a detailed review
+                Send a detailed review
               </Typography>
               <TextField
                 onChange={handleChange}
@@ -299,6 +279,30 @@ function Hotel() {
               <Button
                 variant="contained"
                 onClick={sendReview}
+                className={classes.cardAction}
+              >
+                Send
+              </Button>
+            </Grid>
+
+            <Grid item xs={4} style={{ display: "block" }}>
+              {/* <Item>Complaint part</Item> */}
+              <Typography className={classes.crow2}>
+                Do you have complaints?
+              </Typography>
+              <TextField
+                onChange={handleChange}
+                multiline
+                minRows={3}
+                variant="outlined"
+                label="Your Message"
+                name="complaint"
+                className={classes.textField}
+                type="text"
+              ></TextField>
+              <Button
+                variant="contained"
+                onClick={sendComplaint}
                 className={classes.cardAction}
               >
                 Send
