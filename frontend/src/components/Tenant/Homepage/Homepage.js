@@ -29,6 +29,7 @@ function Homepage({ setCurrentId }) {
   const [fromDate, setFromDate] = useState();
   const [toDate, setToDate] = useState();
   const [searchKey, setSearchKey] = useState("");
+  const [searchKey2, setSearchKey2] = useState("");
   const [type, setType] = useState("all");
 
   //if (!rooms.length && !isLoading) return 'No rooms pending';
@@ -104,7 +105,7 @@ function Homepage({ setCurrentId }) {
     } catch (error) {}
   }
 
-  function filterBySearch() {
+  function filterBySearchLevel() {
     const tempRooms = duplicateRooms.filter(function (x) {
       var num = Math.floor(parseInt(x.room_number) / 100);
       if (isNaN(searchKey) || !searchKey || parseInt(searchKey) === 0) {
@@ -157,7 +158,7 @@ function Homepage({ setCurrentId }) {
             placeholder="Search rooms by level"
             value={searchKey}
             onChange={(e) => setSearchKey(e.target.value)}
-            onKeyUp={filterBySearch}
+            onKeyUp={filterBySearchLevel}
             style={{
               width: "30rem",
               padding: "12px 20px",
@@ -189,8 +190,8 @@ function Homepage({ setCurrentId }) {
         ) : (
           <Rooms
             rooms={rooms?.sort((room1, room2) => {
-              const roomNumber1 = parseInt(room1.room_number);
-              const roomNumber2 = parseInt(room2.room_number);
+              const roomNumber1 = parseInt(room1.rent);
+              const roomNumber2 = parseInt(room2.rent);
 
               if (roomNumber1 < roomNumber2) {
                 return -1;

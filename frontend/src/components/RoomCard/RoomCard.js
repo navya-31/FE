@@ -13,13 +13,16 @@ import { Button, CircularProgress } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { createRoomRequest } from "../../actions/RoomRequests";
-import image from "../../images/searching.png";
+import img1 from "../../images/livingRoom1.jpg";
+import img2 from "../../images/livingRoom2.jpg";
+import img3 from "../../images/livingRoom3.jpg";
 import useStyles from "./styles.js";
 import { getHotelByHotelId } from "../../actions/Hotels.js";
 import { getTenantsByUserId } from "../../actions/Tenants";
 import { createSelector } from "reselect";
 import Swal from "sweetalert2";
 import * as api from "../../api/index";
+
 
 function RoomCard({ room, setCurrentId }) {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
@@ -30,10 +33,12 @@ function RoomCard({ room, setCurrentId }) {
   const [tenants, setTenants] = useState([]);
   const [loading, setLoading] = useState(true);
   const [hotels, setHotels] = useState([]);
-  //Massive refactoring opportunity is to add an attribute to hotels, called review with  stars at first
   const [reviews, setReviews] = useState([]);
   const [stars, setStars] = useState(-1.0);
   const [hasBooked, setHasBooked] = useState(false);
+
+  const images = [img1, img2, img3];
+
   const fetchData = async () => {
     try {
       const { data } = await api.getTenantsByUserId(user?.result?._id);
@@ -124,12 +129,17 @@ function RoomCard({ room, setCurrentId }) {
     "November",
     "December",
   ];
+
   const date = new Date(room.next_vacancy_date);
+
   return loading ? (
     <CircularProgress />
   ) : (
     <Card raised elevation={6} className={classes.card}>
-      <CardMedia className={classes.media} image={image}></CardMedia>
+      <CardMedia
+        className={classes.media}
+        image={images[Math.floor(Math.random() * images.length)]}
+      ></CardMedia>
       <CardContent className={classes.overlay}>
         <Typography gutterBottom variant="h6" component="div">
           {room.hotel_name}

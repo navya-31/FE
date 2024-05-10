@@ -12,7 +12,7 @@ import { Button, CircularProgress, Grid } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { createRoomRequest } from "../../actions/RoomRequests.js";
-import image from "../../images/livingRoom.jpg";
+import img from "../../images/livingRoom1.jpg";
 import useStyles from "./styles.js";
 import { getHotelByHotelId } from "../../actions/Hotels.js";
 import { getTenantsByUserId } from "../../actions/Tenants.js";
@@ -78,7 +78,7 @@ function HotelCard({ currentUser, currentHotel, currentTenant, setCurrentId }) {
 
   return (
     <Card className={classes.card}>
-      <CardMedia className={classes.media} image={image}></CardMedia>
+      <CardMedia className={classes.media} image={img}></CardMedia>
       <CardContent className={classes.overlay}>
         <Typography variant="body1">
           Hello, {currentUser.result.name}!
@@ -99,8 +99,8 @@ function HotelCard({ currentUser, currentHotel, currentTenant, setCurrentId }) {
           per person, every month. With our meal system, you get to enjoy
           homemade quality meals prepared fresh every day for both lunch and
           dinner. Our goal is to provide you with delicious and nutritious meals
-          that will make your stay even more enjoyable. <p></p>Care to join us for a
-          delightful dining experience?
+          that will make your stay even more enjoyable. <p></p>Care to join us
+          for a delightful dining experience?
         </Typography>
       </CardContent>
 

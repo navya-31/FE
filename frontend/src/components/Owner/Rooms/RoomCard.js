@@ -11,7 +11,9 @@ import {
 import { Button, CircularProgress } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import image from "../../../images/searching.png";
+import img1 from "../../../images/livingRoom1.jpg";
+import img2 from "../../../images/livingRoom2.jpg";
+import img3 from "../../../images/livingRoom3.jpg";
 import useStyles from "./styles.js";
 
 function RoomCard({ room, setCurrentId }) {
@@ -26,6 +28,9 @@ function RoomCard({ room, setCurrentId }) {
     // if(tenants.length === 0)dispatch(getTenantsByUserId(user?.result?._id))
   }, []);
 
+  const images = [img1, img2, img3];
+
+  console.log(images);
   const monthNames = [
     "January",
     "February",
@@ -40,11 +45,16 @@ function RoomCard({ room, setCurrentId }) {
     "November",
     "December",
   ];
+
   const date = new Date(room.next_vacancy_date);
   console.log(date);
+
   return (
     <Card raised elevation={6} className={classes.card}>
-      <CardMedia className={classes.media} image={image}></CardMedia>
+      <CardMedia
+        className={classes.media}
+        image={images[Math.floor(Math.random() * images.length)]}
+      ></CardMedia>
       <CardContent className={classes.overlay}>
         <Typography gutterBottom variant="h6" component="div">
           Room #{room.room_number}
@@ -53,9 +63,9 @@ function RoomCard({ room, setCurrentId }) {
         <Typography variant="body2">Rent: {room.rent} $</Typography>
         <Typography variant="body2">Area: {room.area} m2</Typography>
         {date.getFullYear() === 3000 ? (
-          <Typography variant="body2">Vacancy status: Occupied</Typography>
+          <Typography variant="body2" style={{background:"#fc6d6d", borderRadius: "2px"}}>Vacancy status: Occupied</Typography>
         ) : (
-          <Typography variant="body2">Vacancy status: Empty</Typography>
+          <Typography variant="body2" style={{background:"#95f5af", borderRadius: "2px"}}>Vacancy status: Empty</Typography>
         )}
       </CardContent>
     </Card>

@@ -210,8 +210,8 @@ const Rooms = ({ setCurrentId }) => {
             </Grid>
             {rooms
               ?.sort((room1, room2) => {
-                const roomNumber1 = parseInt(room1.room_number);
-                const roomNumber2 = parseInt(room2.room_number);
+                const roomNumber1 = parseInt(room1.rent);
+                const roomNumber2 = parseInt(room2.rent);
 
                 if (roomNumber1 < roomNumber2) {
                   return -1;

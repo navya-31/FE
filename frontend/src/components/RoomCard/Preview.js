@@ -18,16 +18,12 @@ import { getHotelByHotelId } from "../../actions/Hotels.js";
 import { getTenantsByUserId } from "../../actions/Tenants";
 import RoomCard from "./RoomCard";
 
-
 function Preview({ room, setCurrentId }) {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const userId = user?.result?._id;
-  console.log("re rendered");
   useEffect(() => {
-    console.log("rapid fire");
-
     dispatch(getHotelByHotelId(room.hotel_id));
   }, []);
 

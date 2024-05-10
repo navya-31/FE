@@ -58,8 +58,6 @@ function TenantCard({ tenant, setCurrentId }) {
         });
       }
     });
-
-    console.log("ekhane just update tenant query hobe. swal fire kore refresh");
   };
   return (
     // <Box width='600px' style={{marginTop:"20px", marginLeft:"10px"}}>
@@ -94,6 +92,7 @@ function TenantCard({ tenant, setCurrentId }) {
             {users[0].name}
           </Typography>
           <Typography variant="body2">Room #{tenant.room_number}</Typography>
+          <Typography variant="body2">{users[0].email}</Typography>
           <Typography variant="body2">{users[0].phone}</Typography>
         </CardContent>
       </Card>
