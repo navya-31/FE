@@ -1,4 +1,4 @@
-version: '3.8'
+version: "3.8"
 
 services:
   backend:
@@ -13,14 +13,12 @@ services:
     depends_on:
       - mongodb
 
-
   frontend:
     build:
       context: ./frontend
       dockerfile: Dockerfile
     ports:
       - "3000:3000"
-
 
   mongodb:
     image: mongo:latest
@@ -29,7 +27,5 @@ services:
     volumes:
       - mongodb_data:/data/db
 
-
 volumes:
   mongodb_data:
-

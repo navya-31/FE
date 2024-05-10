@@ -8,7 +8,6 @@ import { getComplaintsByHotel } from "../../actions/Complaints";
 import { getRoomsByHotelId } from "../../actions/Rooms";
 import DefaultMessage from "../DefaultMessage/DefaultMessage";
 
-
 const ComplainCardList = ({ setCurrentId, complaints }) => {
   const dispatch = useDispatch();
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
