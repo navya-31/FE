@@ -22,13 +22,19 @@ function RoomCard({ room, setCurrentId }) {
   const navigate = useNavigate();
   const userId = user?.result?._id;
   const classes = useStyles();
+  const [randomImage, setRandomImage] = useState("");
+
   //const {tenants} = useSelector((state) => state.tenants)
   // console.log(tenants)
-  useEffect(() => {
-    // if(tenants.length === 0)dispatch(getTenantsByUserId(user?.result?._id))
-  }, []);
 
   const images = [img1, img2, img3];
+
+  useEffect(() => {
+    // if(tenants.length === 0)dispatch(getTenantsByUserId(user?.result?._id))
+    if (images.length > 0) {
+      setRandomImage(images[Math.floor(Math.random() * images.length)]);
+    }
+  }, []);
 
   console.log(images);
   const monthNames = [
@@ -51,10 +57,7 @@ function RoomCard({ room, setCurrentId }) {
 
   return (
     <Card raised elevation={6} className={classes.card}>
-      <CardMedia
-        className={classes.media}
-        image={images[Math.floor(Math.random() * images.length)]}
-      ></CardMedia>
+      <CardMedia className={classes.media} image={randomImage}></CardMedia>
       <CardContent className={classes.overlay}>
         <Typography gutterBottom variant="h6" component="div">
           Room #{room.room_number}
@@ -63,9 +66,19 @@ function RoomCard({ room, setCurrentId }) {
         <Typography variant="body2">Rent: {room.rent} $</Typography>
         <Typography variant="body2">Area: {room.area} m2</Typography>
         {date.getFullYear() === 3000 ? (
-          <Typography variant="body2" style={{background:"#fc6d6d", borderRadius: "2px"}}>Vacancy status: Occupied</Typography>
+          <Typography
+            variant="body2"
+            style={{ background: "#fc6d6d", borderRadius: "2px" }}
+          >
+            Vacancy status: Occupied
+          </Typography>
         ) : (
-          <Typography variant="body2" style={{background:"#95f5af", borderRadius: "2px"}}>Vacancy status: Empty</Typography>
+          <Typography
+            variant="body2"
+            style={{ background: "#95f5af", borderRadius: "2px" }}
+          >
+            Vacancy status: Empty
+          </Typography>
         )}
       </CardContent>
     </Card>

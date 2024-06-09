@@ -23,7 +23,6 @@ import { createSelector } from "reselect";
 import Swal from "sweetalert2";
 import * as api from "../../api/index";
 
-
 function RoomCard({ room, setCurrentId }) {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
   const dispatch = useDispatch();
@@ -36,11 +35,16 @@ function RoomCard({ room, setCurrentId }) {
   const [reviews, setReviews] = useState([]);
   const [stars, setStars] = useState(-1.0);
   const [hasBooked, setHasBooked] = useState(false);
+  const [randomImage, setRandomImage] = useState("");
 
   const images = [img1, img2, img3];
 
   const fetchData = async () => {
     try {
+      if (images.length > 0) {
+        setRandomImage(images[Math.floor(Math.random() * images.length)]);
+      }
+
       const { data } = await api.getTenantsByUserId(user?.result?._id);
       setTenants([...tenants, data]);
       const newData = await api.getHotelByHotelId(room.hotel_id);
@@ -136,10 +140,7 @@ function RoomCard({ room, setCurrentId }) {
     <CircularProgress />
   ) : (
     <Card raised elevation={6} className={classes.card}>
-      <CardMedia
-        className={classes.media}
-        image={images[Math.floor(Math.random() * images.length)]}
-      ></CardMedia>
+      <CardMedia className={classes.media} image={randomImage}></CardMedia>
       <CardContent className={classes.overlay}>
         <Typography gutterBottom variant="h6" component="div">
           {room.hotel_name}

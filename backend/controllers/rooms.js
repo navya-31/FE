@@ -108,7 +108,6 @@ export const createRoom = async (req, res) => {
       room_number: newRoom.room_number,
       hotel_id: newRoom.hotel_id,
     });
-    console.log("niche dhukar kotha");
     if (existingRoom.length) {
       console.log(existingRoom);
       return res.status(404).send("A room with that number already exists.");
